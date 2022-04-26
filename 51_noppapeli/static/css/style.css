@@ -1,0 +1,120 @@
+h2 {
+    color: crimson;
+    background-color: aquamarine;
+    animation-duration: 1s;
+    animation-name: spin;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+}
+#box {
+    height: 200px;
+    width: 200px;
+    background-color: rebeccapurple;
+    animation-duration: 1s;
+    animation-name: spin;
+    animation-timing-function:cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.flex-container {
+    display: flex;
+}
+/*
+.flex-child {
+    flex: 1;
+}*/
+
+div.scroll {
+    background-color:beige;
+    width: 600px;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.die {
+    position: relative;
+    background-color: antiquewhite;
+    cursor: pointer;
+    width: 50px;
+    height:50px;
+    animation-duration: 1s;
+    animation-name: spin;
+    animation-timing-function:cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 5px;
+}
+.die span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 22px;
+    top: 22px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #25231f;
+    width: 4px;
+}
+.die-1 span:nth-last-of-type(-n+5),
+.die-2 span:nth-last-of-type(-n+4),
+.die-3 span:nth-last-of-type(-n+3),
+.die-4 span:nth-last-of-type(-n+2),
+.die-5 span:last-of-type {
+    opacity: 0;
+
+}
+.die-2 span:nth-of-type(1),
+.die-3 span:nth-of-type(1),
+.die-4 span:nth-of-type(1),
+.die-5 span:nth-of-type(1){
+    left: 11px;
+    top: 11px;
+}
+.die-2 span:nth-of-type(2),
+.die-3 span:nth-of-type(2),
+.die-4 span:nth-of-type(2),
+.die-5 span:nth-of-type(2) {
+    left: 33px;
+    top: 33px;
+}
+.die-4 span:nth-of-type(3),
+.die-5 span:nth-of-type(3) {
+    left: 11px;
+    top: 33px;
+}
+.die-4 span:nth-of-type(4),
+.die-5 span:nth-of-type(4) {
+    left: 33px;
+    top: 11px;
+}
+.die-6 span:nth-of-type(1) {
+    left: 11px;
+    top: 9px;
+}
+.die-6 span:nth-of-type(2) {
+    left: 33px;
+    top: 35px;
+}
+.die-6 span:nth-of-type(3) {
+    left: 11px;
+    top: 35px;
+}
+.die-6 span:nth-of-type(4) {
+    left: 33px;
+    top: 9px;
+}
+.die-6 span:nth-of-type(5) {
+    left: 11px;
+}
+.die-6 span:nth-of-type(6) {
+    left: 33px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

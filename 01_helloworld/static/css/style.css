@@ -1,0 +1,20 @@
+h2 {
+    color: crimson;
+    animation-duration: 4s;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

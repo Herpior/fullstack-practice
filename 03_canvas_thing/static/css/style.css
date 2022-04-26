@@ -1,0 +1,24 @@
+h2 {
+    color: crimson;
+    background-color: aquamarine;
+    animation-duration: 1s;
+    animation-name: spin;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+}
+canvas {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 250px;
+}
+
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

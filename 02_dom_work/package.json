@@ -1,0 +1,14 @@
+{
+  "name": "02_dom_work",
+  "version": "1.0.0",
+  "description": "dom stuff",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

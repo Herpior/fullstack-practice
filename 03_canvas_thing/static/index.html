@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Canvas thingy</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="script.js"></script>
+    <script src="numbergame.js"></script>
+    <script src="draw.js"></script>
+</head>
+
+<body>
+    <canvas id="layer1" width="500" height="500"></canvas>
+    <canvas id="layer0" width="500" height="500" onmousedown="mouseDown()" onmousemove="mouseMoved()"
+        onmouseup="mouseUp()" onmouseleave="mouseExit()" onmouseenter="mouseEnter()"></canvas>
+    <button id="bigbutton" onclick="setBrush(50)">Big Brush</button>
+    <button id="smolbutton" onclick="setBrush(5)">Smol Brush</button>
+    <button id="redbutton" onclick="setColor('#ff0000')">Red</button>
+    <button id="greenbutton" onclick="setColor('#00ff00')">Green</button>
+    <button id="bluebutton" onclick="setColor('#0000ff')">Blue</button>
+    <button id="blackbutton" onclick="setColor('#000000')">Black</button>
+    <button id="startbutton" onclick="startCanvas()">Start</button>
+    <button id="clearbutton" onclick="clearCanvas()">Clear</button>
+    <button id="clearbutton" onclick="redrawCanvas()">Redraw</button>
+    <br />
+    <p id="resultText"></p>
+    <p id="guessCount"></p>
+    <p id="prevText"></p>
+    <textarea name="guess" id="guessText" cols="3" rows="1"></textarea>
+    <p id="guideText">Guess number between 0 and 100</p>
+    <button id="guessButton" onclick="guess()">Guess</button>
+    <button id="resetButton" onclick="reset()">Reset</button>
+</body>
+
+</html>
