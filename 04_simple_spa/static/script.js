@@ -2,7 +2,34 @@ window.onload = () => {
     createForm();
     getContactList();
 }
-
+var mode = 0;
+changeToEditMode = (contact) => {
+    mode = contact.id;
+    let firstname = document.getElementById("fnameinput");
+    let lastname = document.getElementById("lastnameinput");
+    let email = document.getElementById("emailinput");
+    let phone = document.getElementById("phoneinput");
+    let submitbutton = document.getElementById("submitbutton");
+    firstname.value = contact.firstname;
+    lastname.value = contact.lastname;
+    email.value = contact.email;
+    phone.value = contact.phone;
+    submitbutton.value = "Save";
+    
+}
+changeToAddMode = () => {
+    mode = 0;
+    let firstname = document.getElementById("firstnameinput");
+    let lastname = document.getElementById("lastnameinput");
+    let email = document.getElementById("emailinput");
+    let phone = document.getElementById("phoneinput");
+    let submitbutton = document.getElementById("submitbutton");
+    firstname.value = "";
+    lastname.value = "";
+    email.value = "";
+    phone.value = "";
+    submitbutton.value = "Add";
+}
 createForm = () => {
     let anchor = document.getElementById("anchor");
     let form = document.createElement("form");
@@ -91,6 +118,11 @@ addToList = async () => {
     }
     let method = "POST";
     let url = "/api/contact";
+    console.log(mode);
+    if (mode) {
+        method = "PUT";
+        url = "/api/contact/" + mode;
+    }
     let request = {
         "method":method,
         "mode":"cors",
@@ -104,6 +136,9 @@ addToList = async () => {
         email.value = "";
         phone.value = "";
         getContactList();
+        if(mode){
+            changeToAddMode();
+        }
     } else {
         console.log("Server response: "+response.status);
     }
@@ -188,7 +223,7 @@ createContactTable = (data) => {
         editbutton.setAttribute("type", "button");
         editbutton.setAttribute("value", "Edit");
         //editbutton.setAttribute("name", obj.id);
-        editbutton.addEventListener("click", () => editContact(obj.id));
+        editbutton.addEventListener("click", () => changeToEditMode(obj));
         editcell.appendChild(editbutton);
 
         row.appendChild(removecell);
@@ -201,9 +236,16 @@ createContactTable = (data) => {
     anchor.appendChild(table);
 }
 
-removeContact = (id) => {
-    console.log("remove " + id);
-}
-editContact = (id) => {
-    console.log("edit " + id);
+removeContact = async (id) => {
+    let request = {
+        "method":"DELETE",
+        "mode":"cors",
+        "headers":{"content-type":"application/json"}
+    }
+    let response = await fetch("/api/contact/"+id, request);
+    if (response.ok){
+        getContactList();
+    } else {
+        console.log("Failed to delete, Server response: " + response.status);
+    }
 }
